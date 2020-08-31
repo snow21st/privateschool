@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/academic','AcademicController');
+Route::group(['prefix'=>'backside','as'=> 'backside.'],function ()
+{
+	Route::resource('/academic','AcademicController');
+
+});
 
 
 Route::get('/', function () {
