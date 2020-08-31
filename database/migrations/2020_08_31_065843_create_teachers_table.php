@@ -18,7 +18,11 @@ class CreateTeachersTable extends Migration
             $table->foreignId('user_id')
             ->references('id')
             ->on('users')
-            ->onDelete('cascade');      
+            ->onDelete('cascade');   
+               $table->foreignId('subject_id')
+            ->references('id')
+            ->on('subjects')
+            ->onDelete('cascade');    
             $table->text('address');
             $table->string('phone');
             $table->string('gender');
