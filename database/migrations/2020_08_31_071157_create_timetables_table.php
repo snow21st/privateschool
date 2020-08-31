@@ -18,6 +18,7 @@ class CreateTimetablesTable extends Migration
             $table->date('date');
             $table->string('start_time');
             $table->string('end_time');
+            
             $table->foreignId('class_id')
             ->references('id')
             ->on('classrooms')
@@ -30,7 +31,7 @@ class CreateTimetablesTable extends Migration
 
             $table->foreignId('academic_id')
             ->references('id')
-            ->on('academicyear')
+            ->on('academicyears')
             ->onDelete('cascade'); 
 
 

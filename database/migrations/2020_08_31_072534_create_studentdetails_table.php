@@ -27,7 +27,7 @@ class CreateStudentdetailsTable extends Migration
 
             $table->foreignId('academic_id')
             ->references('id')
-            ->on('academicyear')
+            ->on('academicyears')
             ->onDelete('cascade'); 
 
             $table->date('assign_date');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAcademicyearTable extends Migration
+class CreateAttendancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateAcademicyearTable extends Migration
      */
     public function up()
     {
-        Schema::create('academicyear', function (Blueprint $table) {
+        Schema::create('attendances_', function (Blueprint $table) {
             $table->id();
-            $table->string('year');
-            $table->date('startdate');
-            $table->date('enddate');            
+            $table->date('date');
+            $table->string('status');
+            $table->foreignId('student_id')
+            ->references('id')
+            ->on('students')
+            ->onDelete('cascade'); 
             $table->timestamps();
-
         });
     }
 
@@ -30,6 +32,6 @@ class CreateAcademicyearTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academicyear');
+        Schema::dropIfExists('attendances_');
     }
 }
