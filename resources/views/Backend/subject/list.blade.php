@@ -9,14 +9,14 @@
   
 </div>
 @endif
-    <div class="card-header">Active Users
+    <div class="card-header">Subject List
 
         <div class="btn-actions-pane-right">
             <div role="group" class="btn-group-sm btn-group">
                 <a href="" class="btn btn-primary">
                     <i class="pe-7s-back pe-2x"></i>
                 </a>
-                <a href="{{route('backside.academic.create')}}" class="btn btn-success">
+                <a href="{{route('backside.subject.create')}}" class="btn btn-success">
                     <i class="pe-7s-plus pe-2x"></i>
                 </a>
             </div>
@@ -28,29 +28,25 @@
                 <tr>
                     <th class="text-center">#</th>
                     
-                    <th class="text-center">Year</th>
-                    <th class="text-center">Start Date</th>
-                    <th class="text-center">End Date</th>
-                    <th class="text-center">Actions</th>
+                    <th class="text-center">Subjects</th>
+                  <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @php
                                         $i=1;
                                         @endphp
-                                        @foreach($academics as $academic)
+                                        @foreach($subjects as $subject)
                                         @php
-                                        $year=$academic->year;
-                                        $start=$academic->startdate;
-                                        $end=$academic->enddate;
-                                        $id=$academic->id;
+                                        $name=$subject->name;
+                                       
+                                        $id=$subject->id;
 
                                         @endphp
                 <tr>
                     <td class="text-center text-muted">{{$i++}}</td>
-                    <td class="text-center">{{$year}}</td>
-                    <td class="text-center">{{$start}}</td>
-                    <td class="text-center">{{$end}}</td>
+                    <td class="text-center">{{$name}}</td>
+                  
                    
                     <td class="text-center">
                         

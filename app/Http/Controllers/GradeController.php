@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Academicyear;
+use App\Grade;
 
-class AcademicController extends Controller
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,9 @@ class AcademicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $academics=Academicyear::all();
-
-    
-        return view('Backend.academic.list',compact('academics'));
+    {
+         $grades=Grade::all();
+        return view('Backend.grade.list',compact('grades'));
     }
 
     /**
@@ -27,7 +25,7 @@ class AcademicController extends Controller
      */
     public function create()
     {
-        return view('Backend.academic.new');
+        return view('Backend.grade.new');
     }
 
     /**
@@ -38,31 +36,27 @@ class AcademicController extends Controller
      */
     public function store(Request $request)
     {
-         $validator=$request->validate([
-            'year'=>['required'],
-            'start'=>['required'],
-            'end'=>['required']
+        $validator=$request->validate([
+            'grade'=>['required'],
+        
         
         ]);
 
         if($validator) {
-            $year=$request->year;
-            $start=$request->start;
-            $end=$request->end;
+            $name=$request->grade;
+           
            
         
  
 
 
        
-       $academic= new Academicyear; 
-       $academic->year=$year; 
-       $academic->startdate=$start; 
-       $academic->enddate=$end; 
+       $grade= new Grade; 
+       $grade->name=$name; 
        
-       $academic->save();
+       $grade->save();
 
-       return redirect()->route('backside.academic.index')->with("successMsg","New Academic Years is Added to your data");
+       return redirect()->route('backside.grade.index')->with("successMsg","New Grade is Added to your data");
    }
    else{
      return redirect::back()->withErrors($validator); 
